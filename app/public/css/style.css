@@ -1,0 +1,32 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+
+.title{
+	font-weight: bold;
+	font-family: Tahoma;
+	color: gray;
+	padding: 10px;
+	margin-left: 100px
+}
+
+#name{
+	text-align: center;
+}
+
+.wrapper{
+	width: 1200px;
+	margin: 0 auto 0 auto;
+}
+
+.container{
+	width: 800px;
+	float: left;
+}
+
+.high_scores{
+	border: 1px solid black;
+	width: 300px;
+	float: left;
+}
