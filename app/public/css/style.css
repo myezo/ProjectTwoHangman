@@ -30,3 +30,8 @@ body{
 	width: 300px;
 	float: left;
 }
+
+#my_canvas{
+	border: 1px solid black;
+	background-color: #7EC0EE;
+}
