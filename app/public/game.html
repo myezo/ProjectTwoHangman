@@ -21,17 +21,25 @@
 		<hr>
 		<div class="wrapper">
 			<div class="container">
-				<h2>Player: </h2>
-				<h2>Score: </h2>
-				<h2>Movie</h2>
+				<div class="game_info">
+					<h3>Player: </h3>
+					<h3>Score: </h3>
+				</div>
+				
+				<div class="word_display">
+					<h3 id="lettersGuessed"></h3>
+				</div>
 
 				<canvas id="my_canvas" width="700px" height="500px"></canvas>
-
+			</div>
+				
+			<div class="high_scores">
+				<h3>High Scores</h3>
+				<hr>
 			</div>
 
-
 			<div class="high_scores">
-				<h2>High Scores</h2>
+				<h3>Letters Used</h3>
 				<hr>
 			</div>
 
@@ -39,6 +47,16 @@
 
 
 		<script>
+
+
+		var wordOptions = ["Jurrasic World", "Fight Club", "Super Bowl"];
+		var selectedWord = "";
+		var lettersInWord = [];
+		var numBlanks = 0;
+		var blanksAndSuccesses = [];
+		var wrongLetters = [];
+		var guessesLeft = 9;
+
 			
 		function draw(){
 			var ctx = document.getElementById('my_canvas').getContext('2d');
@@ -46,6 +64,7 @@
 			ctx.fillRect(50, 50, 40, 450);
 			ctx.fillRect(50, 50, 400, 30);
 			//ctx.strokeRect(30, 30, 50, 50);
+
 			//circle
 			ctx.beginPath();
 			ctx.arc(400,125,40,0,2*Math.PI);
@@ -81,11 +100,17 @@
 		}
 
 
-		function drawCircle(){
-			var ctx = document.getElementById('my_canvas').getContext('2d');
-
+		function startGame(){
+			selectedWord = wordOptions[Math.floor(Math.random()*wordOptions.length)];
+			lettersInWord = selectedWord.split("");
+			numBlanks = lettersInWord.length;
+			for(var i=0; i<numBlanks; i++){
+				blanksAndSuccesses.push("_");
+			}
+			console.log(blanksAndSuccesses);
 		}
 
+		startGame();
 		window.onload = draw;
 
 		</script>

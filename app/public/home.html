@@ -37,30 +37,26 @@
 
 		<script>
 
-			var count = 7;
+			var count = 9;
 			var counter;
 			var canvas = document.getElementById('my_canvas');
 			var ctx = canvas.getContext('2d');
 			
-			function draw(){
-				//var ctx = document.getElementById('my_canvas').getContext('2d');
-				//ctx.fillStyle = "magenta";
+
+			function drawPole(){	
 				ctx.fillRect(50, 50, 40, 450);
+			}
+
+			function drawShelf(){
 				ctx.fillRect(50, 50, 400, 30);
-				//ctx.strokeRect(30, 30, 50, 50);
 			}
 
 			function clearCanvas(){
-				//var ctx = document.getElementById('my_canvas').getContext('2d');
-				//ctx.fillStyle = "magenta";
 				ctx.clearRect(0,0,canvas.width,canvas.height);
-				ctx.fillRect(50, 50, 40, 450);
-				ctx.fillRect(50, 50, 400, 30);
 			}
 				
 			//circle
 			function circleDraw(){
-				//var ctx = document.getElementById('my_canvas').getContext('2d');
 				ctx.beginPath();
 				ctx.arc(400,125,40,0,2*Math.PI);
 				ctx.lineWidth = 7;
@@ -69,13 +65,11 @@
 				
 			//body	
 			function bodyDraw(){
-				//var ctx = document.getElementById('my_canvas').getContext('2d');
 				ctx.fillRect(395,162,12,130);
 			}
 				
 			//right arm
 			function rightarmDraw(){
-				//var ctx = document.getElementById('my_canvas').getContext('2d');
 				ctx.beginPath();
 				ctx.moveTo(397,200);
 				ctx.lineTo(270,140);
@@ -84,7 +78,6 @@
 				
 			//left arm
 			function leftarmDraw(){
-				//var ctx = document.getElementById('my_canvas').getContext('2d');
 				ctx.beginPath();
 				ctx.moveTo(400,203);
 				ctx.lineTo(540,140);
@@ -93,7 +86,6 @@
 				
 			//left leg
 			function leftlegDraw(){
-				//var ctx = document.getElementById('my_canvas').getContext('2d');
 				ctx.beginPath();
 				ctx.moveTo(400,290);
 				ctx.lineTo(490,380);
@@ -102,7 +94,6 @@
 				
 			//right leg
 			function rightlegDraw(){
-				//var ctx = document.getElementById('my_canvas').getContext('2d');
 				ctx.beginPath();
 				ctx.moveTo(400,290);
 				ctx.lineTo(300,380);
@@ -118,7 +109,11 @@
 			function hangmanDisplay(){
 				count--;
 				console.log(count);
-				if(count == 6){
+				if(count == 8){
+					drawPole();
+				}else if(count == 7){
+					drawShelf();
+				}else if(count == 6){
 					circleDraw();
 				}else if(count == 5){
 					bodyDraw();
@@ -132,15 +127,14 @@
 					leftlegDraw();
 				}else{
 					clearInterval(counter);
-					count = 7;
+					count = 9;
 					clearCanvas();
 					hangmanTimer();
 				}
 			}
+	
 
-			hangmanTimer();	
-
-			window.onload = draw;
+			window.onload = hangmanTimer;
 			
 
 		</script>
