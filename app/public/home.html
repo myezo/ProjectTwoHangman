@@ -20,14 +20,127 @@
 		<h1 class="title">Hangman</h1>
 		<hr>
 		<div class="wrapper">
-			
+
+		  <div class="home_div">	
 			<form method="POST" action="/create">
-				<h4>Enter Username</h4>
+				<h4 id="entername">Enter Username To Play</h4>
 				<input type="text" name="name" id="name" class="form control" required>
 
-				<input type="submit">
+				<button type="submit" class="btn btn-primary">Submit</button>
+
 			</form>
+
+			<canvas id="my_canvas" width="700px" height="500px"></canvas>
+		  </div>
 		</div>
+
+
+		<script>
+
+			var count = 7;
+			var counter;
+			
+			function draw(){
+				var ctx = document.getElementById('my_canvas').getContext('2d');
+				//ctx.fillStyle = "magenta";
+				ctx.fillRect(50, 50, 40, 450);
+				ctx.fillRect(50, 50, 400, 30);
+				//ctx.strokeRect(30, 30, 50, 50);
+			}
+
+			function clearCanvas(){
+				var ctx = document.getElementById('my_canvas').getContext('2d');
+				//ctx.fillStyle = "magenta";
+				ctx.fillRect(50, 50, 40, 450);
+				ctx.fillRect(50, 50, 400, 30);
+			}
+				
+			//circle
+			function circleDraw(){
+				var ctx = document.getElementById('my_canvas').getContext('2d');
+				ctx.beginPath();
+				ctx.arc(400,125,40,0,2*Math.PI);
+				ctx.lineWidth = 7;
+				ctx.stroke();
+			}
+				
+			//body	
+			function bodyDraw(){
+				var ctx = document.getElementById('my_canvas').getContext('2d');
+				ctx.fillRect(395,162,12,130);
+			}
+				
+			//right arm
+			function rightarmDraw(){
+				var ctx = document.getElementById('my_canvas').getContext('2d');
+				ctx.beginPath();
+				ctx.moveTo(397,200);
+				ctx.lineTo(270,140);
+				ctx.stroke();
+			}
+				
+			//left arm
+			function leftarmDraw(){
+				var ctx = document.getElementById('my_canvas').getContext('2d');
+				ctx.beginPath();
+				ctx.moveTo(400,203);
+				ctx.lineTo(540,140);
+				ctx.stroke();
+			}
+				
+			//left leg
+			function leftlegDraw(){
+				var ctx = document.getElementById('my_canvas').getContext('2d');
+				ctx.beginPath();
+				ctx.moveTo(400,290);
+				ctx.lineTo(490,380);
+				ctx.stroke();
+			}
+				
+			//right leg
+			function rightlegDraw(){
+				var ctx = document.getElementById('my_canvas').getContext('2d');
+				ctx.beginPath();
+				ctx.moveTo(400,290);
+				ctx.lineTo(300,380);
+				ctx.stroke();
+			}
+
+			//display hangman pieces
+			function hangmanTimer(){
+				counter = setInterval(hangmanDisplay, 1000);
+			}
+
+			//display hangman body
+			function hangmanDisplay(){
+				count--;
+				console.log(count);
+				if(count == 6){
+					circleDraw();
+				}else if(count == 5){
+					bodyDraw();
+				}else if(count == 4){
+					rightarmDraw();
+				}else if(count == 3){
+					leftarmDraw();
+				}else if(count == 2){
+					rightlegDraw();
+				}else if(count == 1){
+					leftlegDraw();
+				}else{
+					clearInterval(counter);
+					count = 7;
+					clearCanvas();
+					hangmanTimer();
+				}
+			}
+
+			hangmanTimer();	
+
+			window.onload = draw;
+			
+
+		</script>
 
 	</body>
 

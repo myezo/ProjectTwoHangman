@@ -13,11 +13,27 @@ body{
 
 #name{
 	text-align: center;
+	width: 300px;
+	height: 35px;
 }
 
 .wrapper{
 	width: 1200px;
 	margin: 0 auto 0 auto;
+}
+
+.home_div{
+	text-align: center;
+}
+
+#entername{
+	font-family: Tahoma;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+form{
+	padding: 20px;
 }
 
 .container{
