@@ -45,6 +45,12 @@ form{
 	display: inline-block;
 }
 
+#display_lines{
+	font-weight: bold;
+	font-size: 35px;
+	text-align: center;
+}
+
 h3{
 	font-size: 20px;
 	font-weight: bold;

@@ -24,6 +24,7 @@
 				<div class="game_info">
 					<h3>Player: </h3>
 					<h3>Score: </h3>
+					<h3 id="display_lines"></h3>
 				</div>
 				
 				<div class="word_display">
@@ -60,10 +61,8 @@
 			
 		function draw(){
 			var ctx = document.getElementById('my_canvas').getContext('2d');
-			//ctx.fillStyle = "magenta";
 			ctx.fillRect(50, 50, 40, 450);
 			ctx.fillRect(50, 50, 400, 30);
-			//ctx.strokeRect(30, 30, 50, 50);
 
 			//circle
 			ctx.beginPath();
@@ -105,8 +104,9 @@
 			lettersInWord = selectedWord.split("");
 			numBlanks = lettersInWord.length;
 			for(var i=0; i<numBlanks; i++){
-				blanksAndSuccesses.push("_");
+				blanksAndSuccesses.push(" _ ");
 			}
+			$('#display_lines').append(blanksAndSuccesses);
 			console.log(blanksAndSuccesses);
 		}
 
