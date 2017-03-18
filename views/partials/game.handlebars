@@ -1,0 +1,37 @@
+<h1 class="title">Hangman</h1>
+<hr>
+<div class="wrapper">
+	<div class="container">
+		<div class="left_side">
+			<div class="game_info">
+				<h3>Player: {{username}}</h3>
+				<h3 id="display_score"></h3>
+				<h3 id="display_lines"></h3>
+			</div>
+			
+			<div class="word_display">
+				<h3 id="lettersGuessed"></h3>
+			</div>
+		</div>
+
+		<div class="right_side">
+			<h4 id="timer">Test Display</h4>
+			<h4 id="win_loss"></h4>
+		</div>
+
+		<canvas id="my_canvas" width="700px" height="500px"></canvas>
+	</div>
+		
+	<div class="high_scores">
+		<h3>High Scores</h3>
+		<hr>
+		<h3>{{total_score}} by User: {{user_id}}</h3>
+	</div>
+
+	<div class="high_scores">
+		<h3>Letters Used</h3>
+		<hr>
+		<h5 id="wrong_letters"></h5>
+	</div>
+
+</div>

@@ -69,6 +69,7 @@
 		var score = 0;
 		var key;
 		var incorrect = 0;
+		var finalScore = 0;
 
 
 
@@ -112,13 +113,10 @@
 			$('#display_lines').html(drawThis);
 			if(correctLetterCount == selectedWord.length){
 				$('#win_loss').append("You Won!!");
+				finalScore == score;
 			}
 		}
 
-
-		function checkLetters(){
-
-		}
 
 
 		function drawHangman(){
@@ -147,6 +145,8 @@
 		document.onkeyup = function(event){
 			key = event.key;
 			key = key.toUpperCase();
+
+			
 			if(selectedWord.indexOf(key) >= 0){
 				correctLetters.push(key);
 				score += 1000;
@@ -159,6 +159,7 @@
 				$('#wrong_letters').html(wrongLetters + ", ");
 				console.log(wrongLetters);
 			}
+			
 			checkWord();
 			drawHangman();
 		}
