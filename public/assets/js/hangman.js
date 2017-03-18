@@ -1,4 +1,4 @@
-var wordOptions = ["super bowl", "fight club"];
+var wordOptions = ["super bowl", "fight club", "dinner party", "tostitos", "jiu jitsu", "march madness", "bootstrap"];
 var selectedWord = "";
 var correctLetters = [];
 var allLetters = [];
@@ -13,24 +13,22 @@ var finalScore = 0;
 
 
 
-
 function drawGame(){
 	selectedWord = wordOptions[Math.floor(Math.random()*wordOptions.length)];
 	selectedWord = selectedWord.toUpperCase();
 	console.log(selectedWord);
 	$('#display_score').html("Score: " + score);
-	
-	if (selectedWord.indexOf(" ") >= 0){
-		correctLetters.push(" ");
-		for(var i = 0; i < selectedWord.length; i++){
-			if(selectedWord[i] == " "){
-				lineArr.push("&nbsp;&nbsp;&nbsp;");
-			}else{
+
+
+	for(var i = 0; i < selectedWord.length; i++){
+		if (selectedWord[i] == " "){
+			correctLetters.push(" ");
+			lineArr.push("&nbsp;&nbsp;&nbsp;");
+		}else{
 			lineArr.push(" _ ");
-			}
 		}
-	$('#display_lines').html(lineArr);
 	}
+	$('#display_lines').html(lineArr);
 }
 
 
@@ -48,12 +46,21 @@ function checkWord(){
 			correctLetterCount++;
 		}else{
 			drawThis += " _ ";
+
 		}
 	}
 	$('#display_lines').html(drawThis);
 	if(correctLetterCount == selectedWord.length){
 		$('#win_loss').append("You Won!!");
-		finalScore == score;
+		finalScore = score;
+		$.post( "/create", finalScore, function( data ) {
+		  console.log(data);
+		});
+	}else if(incorrect == 8){
+		finalScore = score;
+		$.post( "/create", finalScore, function( data ) {
+		  console.log(data);
+		});
 	}
 }
 
@@ -143,17 +150,23 @@ document.onkeyup = function(event){
 	key = event.key;
 	key = key.toUpperCase();
 
-	
-	if(selectedWord.indexOf(key) >= 0){
+	if(allLetters.indexOf(key) >= 0){
+		$('#used_letter').text("Already Used Letter!!");
+		score == score;
+	}else if(selectedWord.indexOf(key) >= 0){
 		correctLetters.push(key);
+		allLetters.push(key);
 		score += 1000;
 		$('#display_score').html("Score: " + score);
+		$('#used_letter').text(" ");
 	}else{
 		score -= 1000;
 		incorrect++;
 		$('#display_score').html("Score: " + score);
 		wrongLetters.push(key);
+		allLetters.push(key);
 		$('#wrong_letters').html(wrongLetters + ", ");
+		$('#used_letter').text(" ");
 		console.log(wrongLetters);
 	}
 	

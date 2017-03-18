@@ -2,15 +2,18 @@
 views/users/sign_in.handlebars -->
 <form class="create-update-form" action="/users/login" method="POST">
 
-  <div class="form-group">
+<h1 class="title">Hangman</h1>
+ <hr>
+  <div class="wrapper">
+  <div class="home_div">
     <label for="em">Email:</label>
     <input type="text" id="em" name="email">
   </div>
 
-  <div class="form-group">
+  <div class="home_div">
     <label for="pass">Password:</label>
     <input type="password" id="pass" name="password">
   </div>
 
-  <button type="submit">Sign In</button>
-</form>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</div>

@@ -9,9 +9,7 @@ li {
 }
 
 .create-update-form {
-  background: aqua;
-  margin: 5px;
-  padding: 5px;
+
 }
 
 .form-group {
@@ -87,6 +85,11 @@ form{
 }
 
 #timer{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#used_letter{
   font-size: 20px;
   font-weight: bold;
 }

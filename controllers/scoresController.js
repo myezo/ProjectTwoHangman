@@ -36,7 +36,7 @@ router.get('/hangman', function(req,res) {
 
 		connection.query(query, function(err, scores) {
 			res.render('scores/hangman', {
-				scores: scores,
+				scores: finalScore,
 				logged_in: req.session.logged_in,
 				user_email: req.session.user_email,
 				user_id: req.session.user_id,
