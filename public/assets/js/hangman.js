@@ -53,12 +53,12 @@ function checkWord(){
 	if(correctLetterCount == selectedWord.length){
 		$('#win_loss').append("You Won!!");
 		finalScore = score;
-		$.post( "/create", finalScore, function( data ) {
+		$.post( "/scores/create", { total_score: finalScore }, function( data ) {
 		  console.log(data);
 		});
 	}else if(incorrect == 8){
 		finalScore = score;
-		$.post( "/create", finalScore, function( data ) {
+		$.post( "/scores/create", { total_score: finalScore }, function( data ) {
 		  console.log(data);
 		});
 	}

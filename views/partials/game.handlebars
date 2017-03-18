@@ -25,10 +25,12 @@
 	<div class="high_scores">
 		<h3>High Scores</h3>
 		<hr>
-		<h3>{{total_score}} by User: {{user_id}}</h3>
+		{{#each scores}}
+			<h3>{{username}} {{total_score}} </h3>
+		{{/each}}
 	</div>
 
-	<div class="high_scores">
+	<div class="letters_used">
 		<h3>Letters Used</h3>
 		<hr>
 		<h5 id="wrong_letters"></h5>

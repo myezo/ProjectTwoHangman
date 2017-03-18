@@ -12,7 +12,7 @@ var connection = require('../config/connection.js')
 
 router.get('/', function(req,res) {
 	if (req.session.logged_in){
-		var query = "SELECT * FROM scores ORDER BY total_score DESC"
+		var query = "SELECT username, total_score FROM users LEFT JOIN scores ON scores.user_id = users.id ORDER BY total_score DESC LIMIT 3"
 
 		connection.query(query, function(err, scores) {
 			res.render('scores/index', {
@@ -77,6 +77,9 @@ router.post('/create', function(req,res) {
 
 	connection.query(query, [req.body.total_score, req.session.user_id], function(err, coupons) {
 		res.send('200');
+		if(err){
+			console.log(err)
+		}
 	});
 });
 
