@@ -1,4 +1,4 @@
-var wordOptions = ["super bowl", "fight club", "dinner party", "tostitos", "jiu jitsu", "march madness", "bootstrap"];
+var wordOptions = ["super bowl", "new england patriots", "fight club", "dinner party", "tostitos", "jiu jitsu", "march madness", "bootstrap", "basketball pro", "quarterback"];
 var selectedWord = "";
 var correctLetters = [];
 var allLetters = [];
@@ -11,6 +11,19 @@ var key;
 var incorrect = 0;
 var finalScore = 0;
 
+
+$(document).on('click', '#start-button', function(){
+	correctLetters = [];
+	allLetters = [];
+	wrongLetters = [];
+	lineArr = [];	
+	$('#display_lines').empty();
+	$('#win_loss').empty();
+	$('#wrong_letters').empty();
+	drawGame();
+	clearCanvas();
+	$(this).remove();
+});
 
 
 function drawGame(){
@@ -56,14 +69,21 @@ function checkWord(){
 		$.post( "/scores/create", { total_score: finalScore }, function( data ) {
 		  console.log(data);
 		});
+		$('#new_game').append('<input type="button" class="btn btn-primary" id="start-button" value="Play Again">');
 	}else if(incorrect == 8){
 		finalScore = score;
 		$.post( "/scores/create", { total_score: finalScore }, function( data ) {
 		  console.log(data);
 		});
+		$('#new_game').append('<input type="button" class="btn btn-primary" id="start-button" value="Play Again">');
 	}
 }
 
+
+function clearCanvas(){
+	var ctx = document.getElementById('my_canvas').getContext('2d');
+	ctx.clearRect(0, 0, my_canvas.width, my_canvas.height);
+}
 
 
 function drawPole(){

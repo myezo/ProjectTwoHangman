@@ -30,10 +30,13 @@ app.set("view engine", "handlebars");
 var applicationController = require("./controllers/applicationController.js");
 var usersController = require("./controllers/usersController.js");
 var scoresController = require("./controllers/scoresController.js");
+var wordController = require("./controllers/wordController.js");
 
 app.use("/", applicationController);
 app.use("/users", usersController);
 app.use("/scores", scoresController);
+app.use("/words", wordController);
+
 
 
 app.listen(port);
