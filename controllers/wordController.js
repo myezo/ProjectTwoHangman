@@ -5,9 +5,12 @@ var mysql = require('mysql')
 var words = require('../public/assets/js/words.js');
 
 
-module.exports = function(app) {
 
-	app.get("/api/words", function(req, res) {
-	  res.render('index');
+
+	router.get("/api/words", function(req, res) {
+	  res.json(words);
 	});
-}
+
+
+
+module.exports = router;
